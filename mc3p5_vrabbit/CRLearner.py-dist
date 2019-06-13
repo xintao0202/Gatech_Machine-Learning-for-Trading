@@ -1,0 +1,42 @@
+"""
+Template for implementing CRLearner  (c) 2015 Tucker Balch
+"""
+
+import numpy as np
+import random as rand
+
+class CRLearner(object):
+
+    def __init__(self, \
+        num_dimensions = 2, \
+        num_actions = 4, \
+        verbose = False):
+
+        self.num_dimensions = num_dimensions
+        self.num_actions = num_actions
+	self.verbose = verbose
+
+    def querysetstate(self, s):
+        """
+        @summary: Update the state without updating the Q-table
+        @param s: The new state
+        @returns: The selected action
+        """
+        self.s = s
+        action = rand.randint(0, self.num_actions-1)
+        if self.verbose: print "s =", s,"a =",action
+        return action
+
+    def query(self,s_prime,r):
+        """
+        @summary: Update the Q table and return an action
+        @param s_prime: The new state
+        @param r: The ne state
+        @returns: The selected action
+        """
+        action = rand.randint(0, self.num_actions-1)
+        if self.verbose: print "s =", s_prime,"a =",action,"r =",r
+        return action
+
+if __name__=="__main__":
+    print "Yann Lecun was here"
